@@ -1,0 +1,36 @@
+.container-no-notes {
+    background-color: #F7ECDC;
+    width: 100vw;
+    height: 100vh;   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.container-no-notes img {
+    max-width: 500px;
+    margin-top: 8%;
+}
+
+.container-no-notes .heading {
+    font-size: 2rem;
+}
+
+.container-no-notes .content {
+    font-size: 15px;
+}
+
+.container-no-notes .encrypted {
+    position: absolute;
+    bottom: 25px;
+}
+
+.container-no-notes .encrypted img {
+    height: 18px;
+    width: 18px;
+    object-fit: contain;
+    margin-right: 3px;
+}
+
+.container-no-notes .encrypted span {
+    margin-bottom: 4px;
+}
