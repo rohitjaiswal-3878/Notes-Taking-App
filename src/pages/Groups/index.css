@@ -2,11 +2,13 @@
     width: 32%;
     padding: 15px;
 }
+.groups-container h2 {
+    margin-left: 20px;
+}
 .groups-container .groups {
     margin-top: 25px;
     display: flex;
     width: 100%;
-    height: 100%;
     flex-direction: column;
     align-items: center;
 }
@@ -18,6 +20,58 @@
     padding: 4px 0px;
     border-radius: 20px;
     border: none;
-    /* height: 7%; */
     font-size: 1.25rem;
+}
+
+.groups-container .groups .select-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top:20px;
+    width: 75%;
+}
+
+/* responsiveness */
+
+@media only screen and (max-width: 850px){
+    .groups-container {
+        width: 50vw;
+    }
+}
+
+@media only screen and (max-width: 630px){
+    .groups-container {
+        width: 60vw;
+    }
+}
+
+@media only screen and (max-width: 560px){
+    .groups-container {
+        width: 80vw;
+    }
+}
+@media only screen and (max-width: 485px){
+    .groups-container {
+        width: 100vw;
+    }
+    .groups-container h2 {
+        margin: 20px;
+    }
+    .container-no-notes {
+        display: none;
+    }
+    .groups-container .groups .select-group {
+        width: 90%;
+    }
+
+    .groups-container .groups .create-group-btn {
+        width: 90%;
+        background-color: black;
+        color: white;
+        padding: 4px 0px;
+        border-radius: 20px;
+        border: none;
+        font-size: 1.25rem;
+    }
+    
 }

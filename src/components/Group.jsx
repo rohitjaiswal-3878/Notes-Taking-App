@@ -8,11 +8,22 @@ function Group({ group }) {
           backgroundColor: group.color,
           color: "white",
           display: "inline-block",
+          padding: "6%",
+          width: "1.25rem",
+          height: "1.25rem",
+          borderRadius: "50%",
         }}
       >
         {group.shortForm}
       </div>
-      <span>{group.name}</span>
+      <span
+        style={{
+          marginLeft: "10px",
+          fontWeight: "500",
+        }}
+      >
+        {group.name}
+      </span>
     </div>
   );
 }

@@ -34,7 +34,7 @@ function index() {
       <h2>Pocket Notes</h2>
       <div className="groups">
         <button className="create-group-btn">+ Create Notes Group</button>
-        <div>
+        <div className="select-group">
           {groupsData.map((group) => (
             <Group id={group.id} group={group} />
           ))}
