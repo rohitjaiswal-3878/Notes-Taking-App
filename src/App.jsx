@@ -1,6 +1,7 @@
 import "./App.css";
 import PocketNotes from "./pages/PocketNotes";
 import Groups from "./pages/Groups";
+import Notes from "./pages/Notes";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
         <Groups />
         <Routes>
           <Route element={<PocketNotes />} path="/" />
+          <Route element={<Notes />} path="/notes" />
         </Routes>
       </BrowserRouter>
     </div>

@@ -1,0 +1,37 @@
+.notes-container {
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100vh;
+    background-color: #F7ECDC;
+}
+
+.notes-container .heading {
+    background-color: #E8E8E8;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.notes-container .heading .heading-icon {
+    width: 20px;
+    height: 20px;
+    background-color: #0047FF;
+    padding: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    color: white;
+}
+
+.notes-container .heading .heading-title {
+    margin-left:10px;
+    font-weight: 550;
+}
+
+.notes-container .notes {
+    padding: 40px 40px 0px 40px;
+    height: 50%;
+    border: 1px solid black;
+    overflow-y: auto ;
+    scroll-margin-top: 50px;
+}

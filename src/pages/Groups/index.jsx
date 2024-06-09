@@ -36,7 +36,7 @@ function index() {
         <button className="create-group-btn">+ Create Notes Group</button>
         <div className="select-group">
           {groupsData.map((group) => (
-            <Group id={group.id} group={group} />
+            <Group key={group.id} group={group} />
           ))}
         </div>
       </div>
