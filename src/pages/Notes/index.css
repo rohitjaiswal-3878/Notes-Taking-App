@@ -67,11 +67,13 @@
     display: none;
 }
 
+
 /* Note css */
 
 .note-container {
     display: flex;
     margin-bottom: 40px;
+    width: 65vw;
 }
 
 .note-container .note-timestamp {
@@ -94,8 +96,11 @@
     }
 }
 @media only screen and (max-width : 675px){
-    .groups-container {
+    .groups-container{
         display: none;
+    }
+    .note-container{
+        width: 75vw;
     }
     .notes-container .input-notes {
         height: 20%;
@@ -128,3 +133,4 @@
         object-fit: contain;
     }
 }
+

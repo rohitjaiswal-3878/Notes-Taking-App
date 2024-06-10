@@ -3,18 +3,137 @@ import PocketNotes from "./pages/PocketNotes";
 import Groups from "./pages/Groups";
 import Notes from "./pages/Notes";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 function App() {
+  let [goBack, setGoBack] = useState("");
+  const [isClicked, setIsClicked] = useState(false);
+  const [isGroupSel, setIsGroupSel] = useState({
+    selGroupName: localStorage.getItem("selectedGroupName")
+      ? localStorage.getItem("selectedGroupName")
+      : "",
+  });
+  const [group, setGroup] = useState({
+    groupName: "",
+    groupColor: "",
+  });
+  const [groups, setGroups] = useState(
+    localStorage.getItem("groups")
+      ? JSON.parse(localStorage.getItem("groups"))
+      : []
+  );
+
+  const handleOverlayClick = () => {
+    setIsClicked(!isClicked);
+  };
+
+  const handleGroupName = (e) => {
+    let name = e.target.value;
+    setGroup({ ...group, groupName: name });
+  };
+
+  const handleGroupColor = (color) => {
+    setGroup({ ...group, groupColor: color });
+  };
+
+  const handleCreateGroup = () => {
+    if (group.groupName != "" && group.groupColor != "") {
+      setGroups([...groups, group]);
+      setGroup({ groupName: "", groupColor: "" });
+    }
+    setIsClicked(!isClicked);
+  };
+
+  useEffect(() => {
+    localStorage.setItem("groups", JSON.stringify(groups));
+  }, [groups]);
   return (
-    <div className="main-container">
-      <BrowserRouter>
-        <Groups />
-        <Routes>
-          <Route element={<PocketNotes />} path="/" />
-          <Route element={<Notes />} path="/notes" />
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <>
+      <div className="main-container">
+        <BrowserRouter>
+          <Groups
+            isClicked={isClicked}
+            setIsClicked={setIsClicked}
+            groups={groups}
+            isGroupSel={isGroupSel}
+            setIsGroupSel={setIsGroupSel}
+            goBack={goBack}
+            setGoBack={setGoBack}
+          />
+          <Routes>
+            <Route element={<PocketNotes />} path="/" />
+            <Route
+              element={
+                <Notes
+                  groups={groups}
+                  isGroupSel={isGroupSel}
+                  goBack={goBack}
+                  setGoBack={setGoBack}
+                />
+              }
+              path="/notes"
+            />
+          </Routes>
+        </BrowserRouter>
+      </div>
+      {isClicked && (
+        <div>
+          <div onClick={handleOverlayClick} className="overlay"></div>
+          <div className="create-group">
+            <h3>Create New Notes group</h3>
+            <div className="enter-group-data">
+              <div>
+                <label htmlFor="group-name">Group Name</label>
+                <input
+                  type="text"
+                  name="group-name"
+                  id="group-name"
+                  onInput={handleGroupName}
+                />
+              </div>
+              <div className="group-colors-container">
+                <label htmlFor="group-colors">Choose color</label>
+                <ul id="group-colors">
+                  <li
+                    className="group-color"
+                    style={{ backgroundColor: "#B38BFA" }}
+                    onClick={() => handleGroupColor("#B38BFA")}
+                  ></li>
+                  <li
+                    className="group-color"
+                    style={{ backgroundColor: "#FF79F2" }}
+                    onClick={() => handleGroupColor("#FF79F2")}
+                  ></li>
+                  <li
+                    className="group-color"
+                    style={{ backgroundColor: "#43E6FC" }}
+                    onClick={() => handleGroupColor("#43E6FC")}
+                  ></li>
+                  <li
+                    className="group-color"
+                    style={{ backgroundColor: "#F19576" }}
+                    onClick={() => handleGroupColor("#F19576")}
+                  ></li>
+                  <li
+                    className="group-color"
+                    style={{ backgroundColor: "#0047FF" }}
+                    onClick={() => handleGroupColor("#0047FF")}
+                  ></li>
+                  <li
+                    className="group-color"
+                    style={{ backgroundColor: "#6691FF" }}
+                    onClick={() => handleGroupColor("#6691FF")}
+                  ></li>
+                </ul>
+              </div>
+            </div>
+            <button className="create-group-btn" onClick={handleCreateGroup}>
+              Create
+            </button>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 

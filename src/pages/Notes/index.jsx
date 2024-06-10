@@ -1,37 +1,104 @@
 import "./index.css";
 import Note from "../../components/Note";
 import sendIcon from "../../assets/sendIcon.png";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import arrowIcon from "../../assets/arrowIcon.png";
+import { useNavigate } from "react-router-dom";
+import { useRef } from "react";
 
-function Notes() {
-  const [notes, setNotes] = useState([
-    {
-      time: "10:10 Am",
-      date: "9 March 2023",
-      note: "Another productive way to use this tool to begin a daily writing routine. One way is to generate a random paragraph with the intention to try to rewrite it while still keeping the original meaning. The purpose here is to just get the writing started so that when the writer goes onto their day's writing projects, words are already flowing from their fingers.",
-    },
-    {
-      time: "10:30 Am",
-      date: "9 March 2023",
-      note: "It's not only writers who can benefit from this free online tool. If you're a programmer who's working on a project where blocks of text are needed, this tool can be a great way to get that. It's a good way to test your programming and that the tool being created is working well.",
-    },
-    {
-      time: "10:38 Am",
-      date: "9 March 2023",
-      note: "When first building this generator we thought about using computers to generate the paragraphs, but they weren't very good and many times didn't make any sense at all. We therefore took the time to create paragraphs specifically for this generator to make it the best that we could.",
-    },
-  ]);
+function Notes({ groups, isGroupSel, goBack, setGoBack }) {
+  let listRef = useRef(null);
+  let navigate = useNavigate();
+  let [selectedGroup, setSelectedGroup] = useState({});
+  let [shortName, setShortName] = useState("");
+  let [notes, setNotes] = useState({
+    grpName: "",
+    grpNotes: [],
+  });
+  let [note, setNote] = useState("");
+
+  useEffect(() => {
+    if (!localStorage.getItem("selectedGroupName")) {
+      navigate("/");
+    }
+  }, []);
+  useEffect(() => {
+    let selGroup = localStorage.getItem("selectedGroupName");
+    let temp = groups.filter((group) => group.groupName == selGroup);
+    let notesData = localStorage.getItem(selGroup)
+      ? JSON.parse(localStorage.getItem(selGroup))
+      : false;
+    setSelectedGroup(temp[0]);
+    if (!notesData) {
+      setNotes({ grpName: selGroup, grpNotes: [] });
+    } else {
+      setNotes(notesData);
+    }
+    let short = temp[0].groupName
+      .split(" ")
+      .map((part) => part[0].toUpperCase())
+      .join("");
+    setShortName(short);
+  }, [groups, isGroupSel]);
+
+  useEffect(() => {
+    if (notes.grpName != "") {
+      localStorage.setItem(notes.grpName, JSON.stringify(notes));
+    }
+  }, [notes]);
+
+  const handleSubmit = (e) => {
+    let date = new Date();
+    let noteData = {
+      createTime: date.getHours() + ":" + date.getMinutes(),
+      createDate:
+        date.getDate() +
+        " " +
+        getNameOfMonth(date.getMonth()) +
+        " " +
+        date.getFullYear(),
+      note: note,
+    };
+    setNotes((prev) => {
+      let t = prev.grpNotes;
+      return { ...notes, grpNotes: [...t, noteData] };
+    });
+    setNote("");
+  };
+
+  const handleNoteInput = (e) => {
+    setNote(e.target.value);
+  };
+
+  useEffect(() => {
+    listRef.current?.lastElementChild?.scrollIntoView();
+  }, [notes]);
+
+  const handleGoBack = () => {
+    setGoBack("none");
+  };
+
+  useEffect(() => {}, [goBack]);
   return (
     <>
-      <div className="notes-container">
+      <div className="notes-container" style={{ display: goBack }}>
         <div className="heading">
-          <img src={arrowIcon} alt="arrow icon" id="arrow-icon" />
-          <span className="heading-icon">CU</span>
-          <span className="heading-title">Cuvette Notes</span>
+          <img
+            src={arrowIcon}
+            alt="arrow icon"
+            id="arrow-icon"
+            onClick={handleGoBack}
+          />
+          <span
+            className="heading-icon"
+            style={{ backgroundColor: selectedGroup.groupColor }}
+          >
+            {shortName}
+          </span>
+          <span className="heading-title">{selectedGroup.groupName}</span>
         </div>
-        <div className="notes" id="notes-box">
-          {notes.map((note, index) => (
+        <div className="notes" id="notes-box" ref={listRef}>
+          {notes.grpNotes.map((note, index) => (
             <Note key={index} note={note} />
           ))}
         </div>
@@ -40,12 +107,31 @@ function Notes() {
             name="input-note"
             id="input-note"
             placeholder="Enter your text here..........."
+            onInput={handleNoteInput}
+            value={note}
           ></textarea>
-          <img src={sendIcon} alt="send icon" />
+          <img src={sendIcon} alt="send icon" onClick={handleSubmit} />
         </div>
       </div>
     </>
   );
 }
 
+function getNameOfMonth(number) {
+  let array = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  return array[number];
+}
 export default Notes;

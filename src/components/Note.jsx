@@ -4,8 +4,8 @@ function Note({ note }) {
   return (
     <div className="note-container">
       <div className="note-timestamp">
-        <p>{note.time}</p>
-        <p>{note.date}</p>
+        <p>{note.createTime}</p>
+        <p>{note.createDate}</p>
       </div>
       <p className="note-content">{note.note}</p>
     </div>
