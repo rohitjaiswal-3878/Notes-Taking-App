@@ -12,3 +12,13 @@ html {
 .main-container {
     display: flex;
 }
+.disable-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #00000000;
+    opacity: 0.9;
+    z-index: 998;
+    height: 100%;
+    width: 100%;
+}

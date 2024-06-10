@@ -1,6 +1,6 @@
 .groups-container {
     width: 32%;
-    padding: 15px;
+    padding: 15px 0px 15px 15px;
 }
 .groups-container h2 {
     margin-left: 20px;
@@ -10,7 +10,7 @@
     display: flex;
     width: 100%;
     flex-direction: column;
-    align-items: center;
+    align-items: end;
 }
 
 .groups-container .groups .create-group-btn {
@@ -21,15 +21,83 @@
     border-radius: 20px;
     border: none;
     font-size: 1.25rem;
+    margin-right: 10%;
 }
 
 .groups-container .groups .select-group {
     display: flex;
     flex-direction: column;
-    gap: 20px;
     margin-top:20px;
-    width: 75%;
+    width: 85%;
 }
+
+/* create group container css */
+.create-group {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 450px;
+    height: 190px;
+    background-color: white;
+    box-sizing: border-box;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.create-group .enter-group-data {
+    font-size: 16px;
+    font-weight: 550;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px 20px 20px 20px;
+    margin-top: 10px;
+}
+
+.create-group #group-name {
+    margin-left: 20px;
+    width: 60%;
+    padding: 5px 10px;
+    border-radius: 20px;
+    outline: none;
+    border: 1px solid gray;
+}
+
+.create-group #group-colors {
+    list-style: none;
+    display: flex;
+    gap: 5px;
+}
+
+.create-group .group-colors-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+}
+
+.create-group #group-colors li {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+}
+
+.create-group .create-group-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 100px;
+    padding: 5px 0px;
+    border-radius: 8px;
+    outline: none;
+    border: none;
+    background-color: black;
+    color:white;
+}
+
+
 
 /* responsiveness */
 
@@ -60,6 +128,9 @@
     .container-no-notes {
         display: none;
     }
+    .groups-container .groups {
+        align-items: center;
+    }
     .groups-container .groups .select-group {
         width: 90%;
     }
@@ -72,6 +143,47 @@
         border-radius: 20px;
         border: none;
         font-size: 1.25rem;
+        margin-right: 0px;
     }
     
+}
+
+@media only screen and (max-width: 480px) {
+    .create-group {
+        width: 70%;
+        padding: 10px;
+    }
+
+    .create-group h3 {
+        font-size: 18px;
+    }
+
+    .create-group .enter-group-data {
+        font-size: 13px;
+        padding: 5px;
+        margin-left: 5px;
+    }
+    .create-group #group-name {
+        width: 45%;
+        margin-left: 5px;
+    }
+
+    .create-group #group-colors {
+        margin-left: 5px;
+    }
+    .create-group #group-colors li {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+    }
+
+    .create-group .create-group-btn {
+        position: absolute;
+        bottom: 5px;
+        top: 81%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 70%;
+        padding: 5px 0px;
+    }
 }

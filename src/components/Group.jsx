@@ -2,7 +2,14 @@ import React from "react";
 
 function Group({ group }) {
   return (
-    <div>
+    <div
+      style={{
+        backgroundColor: group.isSelected ? "#F7ECDC" : "",
+        padding: "10px",
+        borderStartStartRadius: "20px",
+        borderEndStartRadius: "20px",
+      }}
+    >
       <div
         style={{
           backgroundColor: group.color,

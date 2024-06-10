@@ -1,20 +1,11 @@
 import "./index.css";
 import Note from "../../components/Note";
-
+import sendIcon from "../../assets/sendIcon.png";
 import React, { useState } from "react";
+import arrowIcon from "../../assets/arrowIcon.png";
 
 function Notes() {
   const [notes, setNotes] = useState([
-    {
-      time: "10:10 Am",
-      date: "9 March 2023",
-      note: "Another productive way to use this tool to begin a daily writing routine. One way is to generate a random paragraph with the intention to try to rewrite it while still keeping the original meaning. The purpose here is to just get the writing started so that when the writer goes onto their day's writing projects, words are already flowing from their fingers.",
-    },
-    {
-      time: "10:10 Am",
-      date: "9 March 2023",
-      note: "Another productive way to use this tool to begin a daily writing routine. One way is to generate a random paragraph with the intention to try to rewrite it while still keeping the original meaning. The purpose here is to just get the writing started so that when the writer goes onto their day's writing projects, words are already flowing from their fingers.",
-    },
     {
       time: "10:10 Am",
       date: "9 March 2023",
@@ -35,6 +26,7 @@ function Notes() {
     <>
       <div className="notes-container">
         <div className="heading">
+          <img src={arrowIcon} alt="arrow icon" id="arrow-icon" />
           <span className="heading-icon">CU</span>
           <span className="heading-title">Cuvette Notes</span>
         </div>
@@ -42,6 +34,14 @@ function Notes() {
           {notes.map((note, index) => (
             <Note key={index} note={note} />
           ))}
+        </div>
+        <div className="input-notes">
+          <textarea
+            name="input-note"
+            id="input-note"
+            placeholder="Enter your text here..........."
+          ></textarea>
+          <img src={sendIcon} alt="send icon" />
         </div>
       </div>
     </>

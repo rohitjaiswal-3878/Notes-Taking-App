@@ -1,8 +1,11 @@
 .notes-container {
     box-sizing: border-box;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     background-color: #F7ECDC;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .notes-container .heading {
@@ -31,7 +34,97 @@
 .notes-container .notes {
     padding: 40px 40px 0px 40px;
     height: 50%;
-    border: 1px solid black;
     overflow-y: auto ;
-    scroll-margin-top: 50px;
+    margin: 0 auto;
+}
+
+.notes-container .input-notes {
+    height: 30%;
+    width: 100%;
+    background-color:#E8E8E8;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#input-note {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 20px;
+    outline: none;
+}
+
+.notes-container .input-notes img {
+    position: fixed;
+    bottom: 30px;
+    right: 40px;
+}
+
+#arrow-icon {
+    display: none;
+}
+
+/* Note css */
+
+.note-container {
+    display: flex;
+    margin-bottom: 40px;
+}
+
+.note-container .note-timestamp {
+    width: 15%;
+    font-size: 0.9rem;
+}
+
+.note-container .note-content {
+    font-size: 1rem;
+    width: 85%;
+    text-align: justify;
+}
+
+
+
+/* Responsiveness */
+@media only screen and (max-width : 946px) {
+    .note-container .note-timestamp {
+        margin-right: 10px;
+    }
+}
+@media only screen and (max-width : 675px){
+    .groups-container {
+        display: none;
+    }
+    .notes-container .input-notes {
+        height: 20%;
+        padding: 10px;
+    }
+    .notes-container .input-notes img {
+        height: 25px;
+        width: 25px;
+        object-fit: contain;
+    }
+    .notes-container .notes {
+        height: 65%;
+    }
+
+    .note-container .note-timestamp {
+        width: 30%;
+        font-size: 0.6rem;
+        padding-top: 5px;
+    }
+
+    .note-container .note-content {
+        width: 70%;
+    }
+
+    #arrow-icon {
+        display:inline-block;
+        margin-right: 10px;
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+    }
 }
