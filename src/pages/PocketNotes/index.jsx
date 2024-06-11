@@ -1,11 +1,24 @@
 import "./index.css";
-import React from "react";
+import React, { useEffect } from "react";
 import peopleImg from "../../assets/people_img.png";
 import lockIcon from "../../assets/lock_icon.png";
+import arrowIcon from "../../assets/arrowIcon.png";
 
-function PocketNotes() {
+function PocketNotes({ goBack, setGoBack }) {
+  const handleArrowBack = () => {
+    setGoBack("none");
+  };
+  useEffect(() => {}, [goBack]);
   return (
-    <div className="container-no-notes">
+    <div
+      className="container-no-notes"
+      style={{
+        display: goBack != "none" ? "flex" : "none",
+      }}
+    >
+      <button onClick={handleArrowBack}>
+        <img src={arrowIcon} alt="arrow icon" className="arrow-icon" />
+      </button>
       <div>
         <div className="banner">
           <img src={peopleImg} alt="people image" />

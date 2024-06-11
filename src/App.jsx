@@ -68,7 +68,10 @@ function App() {
             setSideBar={setSideBar}
           />
           <Routes>
-            <Route element={<PocketNotes />} path="/" />
+            <Route
+              element={<PocketNotes goBack={goBack} setGoBack={setGoBack} />}
+              path="/"
+            />
             <Route
               element={
                 <Notes

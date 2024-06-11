@@ -1,8 +1,6 @@
 import React, { useEffect, useLayoutEffect } from "react";
 import "./index.css";
 import Group from "../../components/Group";
-import { useState } from "react";
-import Popup from "reactjs-popup";
 
 function index({
   isClicked,
@@ -12,24 +10,7 @@ function index({
   setIsGroupSel,
   goBack,
   setGoBack,
-  sideBar,
-  setSideBar,
 }) {
-  const toggleSidebar = () => {
-    let temp = localStorage.getItem("selectedGroupName");
-    if (temp == "") {
-      setSideBar(true);
-    } else {
-      setSideBar(false);
-    }
-  };
-
-  useEffect(() => {
-    const matchMedia = window.matchMedia("(max-width: 485px)");
-    matchMedia.addEventListener("change", toggleSidebar);
-    return () => matchMedia.removeEventListener("change", toggleSidebar);
-  }, []);
-
   const handleCreateGroupButton = () => {
     setIsClicked(!isClicked);
   };
@@ -44,11 +25,7 @@ function index({
     <>
       <div
         className="groups-container"
-        style={
-          !sideBar
-            ? { display: goBack != "none" ? "" : "inline-block" }
-            : { display: "inline-block" }
-        }
+        style={{ display: goBack != "none" ? "" : "inline-block" }}
       >
         <h2>Pocket Notes</h2>
         <div className="groups">
