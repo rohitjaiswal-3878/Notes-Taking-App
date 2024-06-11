@@ -124,7 +124,7 @@
         width: 80vw;
     }
 }
-@media only screen and (max-width: 485px){
+@media (max-width: 400px){
     .groups-container {
         width: 100vw;
     }
@@ -156,7 +156,7 @@
     
 }
 
-@media only screen and (max-width: 480px) {
+@media (max-width: 480px) {
     .create-group {
         width: 70%;
         padding: 10px;

@@ -4,6 +4,7 @@ import Groups from "./pages/Groups";
 import Notes from "./pages/Notes";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
+import NotFound from "./pages/NotFound";
 
 function App() {
   let [selectedColor, setSelectedColor] = useState("");
@@ -81,6 +82,7 @@ function App() {
               }
               path="/notes"
             />
+            <Route element={<NotFound />} path="*" />
           </Routes>
         </BrowserRouter>
       </div>

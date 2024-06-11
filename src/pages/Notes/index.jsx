@@ -49,8 +49,15 @@ function Notes({ groups, isGroupSel, goBack, setGoBack }) {
 
   const handleSubmit = (e) => {
     let date = new Date();
+    let hours = date.getHours() % 12;
+    let format = "";
+    if (date.getHours() >= 12) {
+      format = "PM";
+    } else {
+      format = "AM";
+    }
     let noteData = {
-      createTime: date.getHours() + ":" + date.getMinutes(),
+      createTime: hours + ":" + date.getMinutes() + " " + format,
       createDate:
         date.getDate() +
         " " +
