@@ -6,6 +6,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 function App() {
+  let [selectedColor, setSelectedColor] = useState("");
+  let [sideBar, setSideBar] = useState(false);
   let [goBack, setGoBack] = useState("");
   const [isClicked, setIsClicked] = useState(false);
   const [isGroupSel, setIsGroupSel] = useState({
@@ -34,6 +36,7 @@ function App() {
 
   const handleGroupColor = (color) => {
     setGroup({ ...group, groupColor: color });
+    setSelectedColor(color);
   };
 
   const handleCreateGroup = () => {
@@ -42,6 +45,7 @@ function App() {
       setGroup({ groupName: "", groupColor: "" });
     }
     setIsClicked(!isClicked);
+    setSelectedColor("");
   };
 
   useEffect(() => {
@@ -59,6 +63,8 @@ function App() {
             setIsGroupSel={setIsGroupSel}
             goBack={goBack}
             setGoBack={setGoBack}
+            sideBar={sideBar}
+            setSideBar={setSideBar}
           />
           <Routes>
             <Route element={<PocketNotes />} path="/" />
@@ -69,6 +75,8 @@ function App() {
                   isGroupSel={isGroupSel}
                   goBack={goBack}
                   setGoBack={setGoBack}
+                  sideBar={sideBar}
+                  setSideBar={setSideBar}
                 />
               }
               path="/notes"
@@ -96,32 +104,62 @@ function App() {
                 <ul id="group-colors">
                   <li
                     className="group-color"
-                    style={{ backgroundColor: "#B38BFA" }}
+                    style={{
+                      backgroundColor: "#B38BFA",
+                      border:
+                        "1px solid " +
+                        (selectedColor == "#B38BFA" ? "black" : "white"),
+                    }}
                     onClick={() => handleGroupColor("#B38BFA")}
                   ></li>
                   <li
                     className="group-color"
-                    style={{ backgroundColor: "#FF79F2" }}
+                    style={{
+                      backgroundColor: "#FF79F2",
+                      border:
+                        "1px solid " +
+                        (selectedColor == "#FF79F2" ? "black" : "white"),
+                    }}
                     onClick={() => handleGroupColor("#FF79F2")}
                   ></li>
                   <li
                     className="group-color"
-                    style={{ backgroundColor: "#43E6FC" }}
+                    style={{
+                      backgroundColor: "#43E6FC",
+                      border:
+                        "1px solid " +
+                        (selectedColor == "#43E6FC" ? "black" : "white"),
+                    }}
                     onClick={() => handleGroupColor("#43E6FC")}
                   ></li>
                   <li
                     className="group-color"
-                    style={{ backgroundColor: "#F19576" }}
+                    style={{
+                      backgroundColor: "#F19576",
+                      border:
+                        "1px solid " +
+                        (selectedColor == "#F19576" ? "black" : "white"),
+                    }}
                     onClick={() => handleGroupColor("#F19576")}
                   ></li>
                   <li
                     className="group-color"
-                    style={{ backgroundColor: "#0047FF" }}
+                    style={{
+                      backgroundColor: "#0047FF",
+                      border:
+                        "1px solid " +
+                        (selectedColor == "#0047FF" ? "black" : "white"),
+                    }}
                     onClick={() => handleGroupColor("#0047FF")}
                   ></li>
                   <li
                     className="group-color"
-                    style={{ backgroundColor: "#6691FF" }}
+                    style={{
+                      backgroundColor: "#6691FF",
+                      border:
+                        "1px solid " +
+                        (selectedColor == "#6691FF" ? "black" : "white"),
+                    }}
                     onClick={() => handleGroupColor("#6691FF")}
                   ></li>
                 </ul>

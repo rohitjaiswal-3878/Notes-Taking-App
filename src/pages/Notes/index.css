@@ -36,7 +36,12 @@
     height: 50%;
     overflow-y: auto ;
     margin: 0 auto;
+
 }
+
+.notes-container .notes::-webkit-scrollbar{
+    display: none;
+} 
 
 .notes-container .input-notes {
     height: 30%;

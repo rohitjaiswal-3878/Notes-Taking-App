@@ -18,7 +18,12 @@ function Group({ group, isGroupSel, setIsGroupSel, goBack, setGoBack }) {
     navigate("/notes");
   };
 
-  useEffect(() => {}, [goBack]);
+  useEffect(() => {
+    let temp = localStorage.getItem("selectedGroupName");
+    if (temp) {
+      navigate("/notes");
+    }
+  }, [goBack]);
   return (
     <div
       style={{

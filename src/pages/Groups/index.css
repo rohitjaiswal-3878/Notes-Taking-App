@@ -25,12 +25,18 @@
 }
 
 .groups-container .groups .select-group {
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
     margin-top:20px;
     width: 85%;
+    max-height: 350px;
+    overflow-y: scroll;
+    scrollbar-width: thin;
 }
 
+::-webkit-scrollbar{
+    display: none;
+} 
 /* create group container css */
 .create-group {
     display: inline-block;
@@ -133,6 +139,8 @@
     }
     .groups-container .groups .select-group {
         width: 90%;
+        max-height: 75vh;
+
     }
 
     .groups-container .groups .create-group-btn {
