@@ -100,7 +100,12 @@
         margin-right: 10px;
     }
 }
-@media only screen and (max-width : 675px){
+@media only screen and (max-width : 770px) {
+    .note-container{
+        width: 50vw;
+    }
+}
+@media only screen and (max-width : 485px){
     .groups-container{
         display: none;
     }
