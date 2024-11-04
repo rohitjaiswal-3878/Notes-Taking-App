@@ -1,8 +1,23 @@
-# React + Vite
+# (Notes Taking App)[https://react-notes-taking-app.vercel.app/]
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Notes Taking App** is a simple and user-friendly application that allows users to create groups and store notes within those groups. Built using **HTML**, **CSS**, **JavaScript**, and **React**, this app leverages local storage to maintain data and timestamps for each note.
 
-Currently, two official plugins are available:
+![Notes Taking App](https://github.com/user-attachments/assets/d4093ec5-4c9b-4629-a4b9-74ff3c0b8347)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+ <!-- Replace this with the actual path to your image -->
+
+## Features
+
+- **Group Creation**: Easily create groups to organize your notes.
+- **Note Management**: Add and edit notes within each group.
+- **Timestamp Storage**: Each note is stored with a timestamp to track when it was created or modified.
+- **Local Storage**: All data is maintained in local storage, ensuring notes are saved even after the application is closed.
+
+## Tech Stack
+
+- **Frontend**: HTML, CSS, JavaScript, React
+- **Storage**: Local storage
+
+If you have any questions, or feedback, or need support, please contact me directly at rohitjaiswal8898@gmail.com<br>
+Thank you for checking out Notes taking app! I hope it's useful to you. 
+
