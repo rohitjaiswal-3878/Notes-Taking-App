@@ -9,7 +9,6 @@
 ## Features
 
 - **Group Creation**: Easily create groups to organize your notes.
-- **Note Management**: Add and edit notes within each group.
 - **Timestamp Storage**: Each note is stored with a timestamp to track when it was created or modified.
 - **Local Storage**: All data is maintained in local storage, ensuring notes are saved even after the application is closed.
 
